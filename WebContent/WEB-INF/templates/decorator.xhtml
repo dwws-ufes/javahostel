@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><h:outputText value="JavaHostel :: " /><ui:insert name="title" /></title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css' />
+	<h:outputStylesheet library="css" name="skel-noscript.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="style-desktop.css" />
+</h:head>
+<h:body>
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><h:link value="Registration" outcome="/registration/index" /></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Book Room</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="#">JavaHostel</a></h1>
+					<span class="tag">Java EE Example WebApp</span>
+				</div>
+			</div>
+		</div>
+	<!-- Header --> 
+
+	<!-- Main -->
+		<div id="main">
+			<div id="content" class="container">
+				<ui:insert name="contents">Blank page.</ui:insert>
+			</div>
+		</div>
+	<!-- /Main -->
+	
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>&ldquo;In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat.&rdquo;</blockquote>
+				</section>
+			</div>
+		</div>
+	<!-- /Tweet -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Get in touch</h2>
+						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+					</header>
+					<ul class="contact">
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+
+</h:body>
+</html>
