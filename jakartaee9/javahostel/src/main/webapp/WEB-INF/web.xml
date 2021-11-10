@@ -22,4 +22,14 @@
 		<param-value>true</param-value>
 	</context-param>
 
+    <data-source>
+        <name>java:app/datasources/javahostel</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <server-name>localhost</server-name>
+        <port-number>3306</port-number>
+        <database-name>javahostel</database-name>
+        <user>dwws</user>
+        <password><![CDATA[dwws]]></password>
+    </data-source>
+
 </web-app>
