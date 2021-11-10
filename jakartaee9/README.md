@@ -2,6 +2,15 @@
 
 In this version, the Java Hostel example was implemented in Jakarta EE 9, using [Visual Studio Code](https://code.visualstudio.com/), [WildFly](https://www.wildfly.org/), [MySQL](https://dev.mysql.com/) and [Maven](https://maven.apache.org/). The following sections guide you through the construction of the code or you can just install/configure the necessary tools (see **Preparation**), clone the repository and run `mvn install`.
 
+The example shows the following Jakarta EE 9 APIs in action:
+
+* [Jakarta Contexts and Dependency Injection (CDI)](https://jakarta.ee/specifications/cdi/);
+* [Jakarta Enterprise Beans (formerly EJB)](https://jakarta.ee/specifications/enterprise-beans/);
+* [Jakarta Persistence (formerly JPA)](https://jakarta.ee/specifications/persistence/);
+* [Jakarta Server Faces (JSF)](https://jakarta.ee/specifications/faces/), and its decorator API Facelets.
+
+All of the above APIs are present in the Jakarta EE 9 Web profile, but you can also use a full profile dependency if you prefer.
+
 
 
 ## Preparation:
@@ -431,7 +440,23 @@ We start development with a visual template so the website looks good right away
 </beans>
 ```
 
-**TODO: EXPLAIN THE CODE!**
+>**Explaining the code:**
+>
+>The original Linear template had to be adjusted in several points:
+>
+>* The headers were replaced so it would become an XHTML file, which is the preferred format for web pages when using JSF (some XML tags are placed at the top and the XML namespace attributes pointing to not only XHTML but also JSF schemas are added to the root `<html>` tag);
+>* The HTML tags `<body>` and `<head>` are replaced by JSF tags `<h:body>` and `<h:head>`. This allows JSF to include code that is needed for it to do its job;
+>* The contents of `<title>` is replaced by a JSF `<h:outputText>` tag with a common prefix for all pages of the application plus a Facelets `<ui:insert>` tag that gets replaced by contents that come from the actual web pages (we will see that later);
+>* References to scritps and stylesheets in HTML (i.e., `<script>` and `<link>` tags) were replaced by their JSF counterparts `<h:outputScript>` and `<h:outputStylesheet>`. This is necessary because the decorator can be used by pages in all levels of your application (e.g., by `index.xhtml` at the root or by `registration/success.xhtml` which is under a folder). Hence, relative references such as `href="css/style.css"` only work at the root level. The JSF tags adjust that automatically;
+>* The _lorem ipsum_ text at the _main_ part of the template was replaced by another `<ui:insert>` tag that allows the actual web pages to insert their contents. Notice that this time some default contents (_Blank page._) were provided;
+>* The header at the _logo_ part of the template was also adjusted, as well as the menu at the _nav_ part. A link to a _Registration_ page was already included and will be used later;
+>* Finally, for the same reason as the JSF script/stylesheet tags before, relative `../` references in `style.css` had to be replaced with absolute references `#{request.contextPath}/resources/`, in which JSF replaces `#{request.contextPath}` with the full URL of the root of the web application (e.g., `http://localhost:8080/javahostel/`).
+>
+>With the template ready, a simple home page was created in `index.xhtml`, again with the XML headers but, this time, the root tag is not `<html>` but `<ui:composition>`, which is a Facelets tag. The Facelets namespace is included in this tag, as well as a reference to the decorator, under the `template` attribute. Then, the sections of the template (defined with the `<ui:insert>` we saw earlier) are filled in with the contents of the `<ui:define>` tags using the same names (`title` and `contents`) defined in the decorator.
+>
+>Next, the `WEB-INF/web.xml` file is provided indicating basically three things: (1) that the `index.xhtml` page should be offered whenever the browser asks for a folder (e.g., `http://localhost:8080/javahostel/` actually opens `http://localhost:8080/javahostel/index.xhtml`); (2) that JSF, through the `FacesServle` class should handle all requests that end in `.xhtml`; and (3) that all date/time conversions should follow the local timezone instead of the default GMT timezone (see [the JSF specification](https://jakarta.ee/specifications/faces/3.0/jakarta-faces-3.0.html#a6088)). This last configuration is necessary, otherwise the birthdate of the guest registration feature always gets modified to the day before due to the use of the wrong timezone (go figure!).
+>
+>Lastly, we provided an empty `beans.xml` configuration so that CDI will behave properly. If this file is not present, WildFly will refuse to deploy the application, saying that JSF is _"Unable to find CDI BeanManager"_ (`FacesException`). As we can deduce, JSF depends on CDI to work properly.
 
 Next, we configure the object/relational mapping with JPA and create the domain classes:
 
