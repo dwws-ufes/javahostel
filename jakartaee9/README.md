@@ -593,7 +593,11 @@ public class Room {
 
 Again, if you want to deploy the partial application now (see instructions in the "Deploy the JavaHostel" section next), if all goes well you will see that JPA will create tables automatically for you in the `javahostel` database. Open the MySQL Workbench and check it out.
 
-**TODO: EXPLAIN THE CODE!**
+>**Explaining the code:**
+>
+>The `META-INF/persistence.xml` file tells the application server that we will use JPA. It defines a persistence unit for our application, indicates Hibernate as the persistence provider (WildFly comes with it bundled, if you use another application server you should find out which is the local JPA provider or add it to the server yourself), points to the data source we created during the "Preparation" section of this tutorial and configures Hibernate to automatically generate tables to our persistent classes in the database and update such tables if the classes are modified (`hibernate.hbm2ddl.auto = update`).
+>
+>That being done, the classes can be implemented and receive persistence annotations such as `@Entity` (indicates the class is persistent), `@Id` (the primary key), `@GeneratedValue(strategy = GenerationType.AUTO)` (primary keys should be generated automatically by JPA or the database) and so on. Explaining all the JPA mappings is out of the scope of this tutorial.
 
 Finally, we implement one of the features of our application: a simple guest registration. A `<h:link value="Registration" outcome="/registration/index" />` has already been included in the `decorator.xhtml` template, so we conclude the example as follows:
 
