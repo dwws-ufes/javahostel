@@ -24,4 +24,23 @@ hs_err_pid*
 
 # Build files
 build/
+
+# Maven
 target/
+.flattened-pom.xml
+
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
+# VS Code
+.classpath
+.project
+.settings/
+.vscode/
+.factorypath
+
+# Netbeans IDE
+nb-configuration.xml
+nbproject/
