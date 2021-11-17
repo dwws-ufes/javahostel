@@ -5,25 +5,8 @@
 		<jta-data-source>java:app/datasources/javahostel</jta-data-source>
 
 		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="create" />
-			<property name="javax.persistence.schema-generation.create-source" value="metadata" />
-			<!-- <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/create.sql"/> -->
-			<!-- <property name="javax.persistence.schema-generation.drop-source" value="metadata"/> -->
-			<!-- <property name="javax.persistence.schema-generation.drop-script-source" value="META-INF/drop.sql"/> -->
-
-			<!-- <property name="javax.persistence.sql-load-script-source" value="META-INF/load.sql"/> -->
-
-			<property name="javax.persistence.schema-generation.scripts.action" value="none" />
-			<property name="javax.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql" />
-			<!-- <property name="javax.persistence.schema-generation.scripts.drop-target" value="file:/tmp/drop.sql"/> -->
-
-			<!--HIBERNATE PROPERTIES-->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-			<!-- <property name="hibernate.generate_statistics" value="true"/> -->
-			<!-- <property name="hibernate.show_sql" value="true"/> -->
-			<!-- <property name="hibernate.format_sql" value="true"/> -->
-			<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
-			<!-- <property name="hibernate.hbm2ddl.auto" value="validate"/> -->
 		</properties>
 	</persistence-unit>
 </persistence>
